@@ -1,0 +1,14 @@
+{
+  "name": "yasith.me",
+  "version": "1.0.0",
+  "repository": "https://github.com/YasithLokuge/yasith.me.git",
+  "author": "Yasith Lokuge <yasith1@gmail.com>",
+  "license": "Apache 2.0",
+  "private": true,
+  "packageManager": "yarn@1.22.0",
+  "workspaces": {
+    "packages": [
+      "web-client"
+    ]
+  }
+}

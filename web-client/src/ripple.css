@@ -1,0 +1,11 @@
+
+.anim {
+    width: 100vw;
+    height: 50vh;
+    background-color: black;
+    /* border: 1px dashed rgb(100, 100, 100); */
+    margin-bottom: auto;
+    display: flex;
+    flex-flow: column nowrap;
+  }
+  

@@ -1,0 +1,33 @@
+version: 0.2
+environment_variables:
+  plaintext:
+    S3_BUCKET: "www.yasith.me"
+    CDN_DISTRIBUTION_ID: 'DISTRIBUTION_ID'
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14
+    commands:
+      - echo Installing dependencies...
+      - printenv
+  pre_build:
+    commands:
+      - yarn set version 1.22.0
+      - yarn workspace @yasith.me/web-client install
+  build:
+    on-failure: ABORT
+    commands:
+      - echo Build started on `date`
+      - yarn set version 1.22.0
+      - yarn workspace @yasith.me/web-client build
+  post_build:
+    commands:
+      - echo terraform apply completed on `date`
+      - aws s3 cp web-client/build s3://${S3_BUCKET} --recursive
+      - echo Build completed on `date`
+      - aws cloudfront create-invalidation --distribution-id ${CDN_DISTRIBUTION_ID} --paths "/*"
+artifacts:
+  files:
+    - '**/*'
+  base-directory: 'web-client/build*'
+  discard-paths: yes
