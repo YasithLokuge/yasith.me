@@ -21,6 +21,8 @@ function command(xtermRef, state, setState) {
         xtermRef.current.terminal.writeln("\x1B[1;93mcontact\x1B[0m");
         xtermRef.current.terminal.writeln("\x1B[1;93mcredits\x1B[0m");
         xtermRef.current.terminal.writeln("\x1B[1;93mblog\x1B[0m");
+        xtermRef.current.terminal.writeln("\x1B[1;93mphotos\x1B[0m");
+        xtermRef.current.terminal.writeln("\x1B[1;93mshop\x1B[0m");
         xtermRef.current.terminal.writeln("\x1B[1;93mprivacy\x1B[0m");
         xtermRef.current.terminal.write(shellprompt);
         setState({ input: "" });
@@ -40,12 +42,36 @@ function command(xtermRef, state, setState) {
         xtermRef.current.terminal.writeln("\x1B[1;4;34mhttps://www.linkedin.com/in/yasithlokuge\x1B[0m");
         xtermRef.current.terminal.write(shellprompt);
         setState({ input: "" });
+        setTimeout(function() {
+            window.open("https://www.linkedin.com/in/yasithlokuge");
+        }, 1000);
     } else if(state === "blog") {
         xtermRef.current.terminal.write("\r\n");
         xtermRef.current.terminal.write("\x1B[1;93mLink to my personal blog \x1B[0m");
-        xtermRef.current.terminal.writeln("\x1B[1;4;34mhttps://blog.yasith.me\x1B[0m");
+        xtermRef.current.terminal.writeln("\x1B[1;4;34mhttps://yasith.me/blog\x1B[0m");
         xtermRef.current.terminal.write(shellprompt);
         setState({ input: "" });
+        setTimeout(function() {
+            window.open("https://yasith.me/blog");
+        }, 1000);
+    } else if(state === "photos") {
+        xtermRef.current.terminal.write("\r\n");
+        xtermRef.current.terminal.write("\x1B[1;93mLink to my personal photos blog \x1B[0m");
+        xtermRef.current.terminal.writeln("\x1B[1;4;34mhttps://yasith.me/photos\x1B[0m");
+        xtermRef.current.terminal.write(shellprompt);
+        setState({ input: "" });
+        setTimeout(function() {
+            window.open("https://yasith.me/photos");
+        }, 1000);
+    } else if(state === "shop") {
+        xtermRef.current.terminal.write("\r\n");
+        xtermRef.current.terminal.write("\x1B[1;93mLink to my redbubble shop \x1B[0m");
+        xtermRef.current.terminal.writeln("\x1B[1;4;34mhttps://www.redbubble.com/people/Yalk/explore\x1B[0m");
+        xtermRef.current.terminal.write(shellprompt);
+        setState({ input: "" });
+        setTimeout(function() {
+            window.open("https://www.redbubble.com/people/Yalk/explore");
+        }, 1000);
     } else if(state === "privacy") {
         xtermRef.current.terminal.write("\r\n");
         xtermRef.current.terminal.writeln("\x1B[1;93mThis website does not collect any personal information.\x1B[0m");

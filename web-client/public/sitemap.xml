@@ -6,12 +6,6 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
-
-<url>
-  <loc>https://yasith.me/</loc>
-  <lastmod>2022-04-16</lastmod>
-</url>
-
 <url>
   <loc>https://yasith.me/blog</loc>
   <lastmod>2022-04-25</lastmod>
