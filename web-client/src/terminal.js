@@ -9,10 +9,9 @@ const shellprompt = '\x1B[1;36myasith@me:~$ \x1B[0m';
 function command(xtermRef, state, setState) {
 
 
-    if(state === "clear") {
-        setState({ input: "" });
+    if(state.input === "clear") {
         createTerminal(xtermRef, state);
-    } else if(state === "help") {
+    } else if(state.input === "help") {
         xtermRef.current.terminal.write("\r\n");
         xtermRef.current.terminal.writeln("\x1B[1;93mls\x1B[0m");
         xtermRef.current.terminal.writeln("\x1B[1;93mpwd\x1B[0m");
@@ -25,61 +24,61 @@ function command(xtermRef, state, setState) {
         xtermRef.current.terminal.writeln("\x1B[1;93mshop\x1B[0m");
         xtermRef.current.terminal.writeln("\x1B[1;93mprivacy\x1B[0m");
         xtermRef.current.terminal.write(shellprompt);
-        setState({ input: "" });
-    } else if(state === "pwd") {
+        setState((prevState) => { return { rows: prevState.rows, cols: prevState.cols, isLarge: prevState.isLarge, input: "" }});
+    } else if(state.input === "pwd") {
         xtermRef.current.terminal.write("\r\n");
         xtermRef.current.terminal.writeln("\x1B[1;37m/home/yasith\x1B[0m");
         xtermRef.current.terminal.write(shellprompt);
-        setState({ input: "" });
-    } else if(state === "ls") {
+        setState((prevState) => { return { rows: prevState.rows, cols: prevState.cols, isLarge: prevState.isLarge, input: "" }});
+    } else if(state.input === "ls") {
         xtermRef.current.terminal.write("\r\n");
         xtermRef.current.terminal.writeln("\x1B[1;37mabout.txt\x1B[0m");
         xtermRef.current.terminal.write(shellprompt);
-        setState({ input: "" });
-    } else if(state === "contact") {
+        setState((prevState) => { return { rows: prevState.rows, cols: prevState.cols, isLarge: prevState.isLarge, input: "" }});
+    } else if(state.input === "contact") {
         xtermRef.current.terminal.write("\r\n");
         xtermRef.current.terminal.write("\x1B[1;93mplease connect with me on linkedin \x1B[0m");
         xtermRef.current.terminal.writeln("\x1B[1;4;34mhttps://www.linkedin.com/in/yasithlokuge\x1B[0m");
         xtermRef.current.terminal.write(shellprompt);
-        setState({ input: "" });
+        setState((prevState) => { return { rows: prevState.rows, cols: prevState.cols, isLarge: prevState.isLarge, input: "" }});
         setTimeout(function() {
             window.open("https://www.linkedin.com/in/yasithlokuge");
         }, 1000);
-    } else if(state === "blog") {
+    } else if(state.input === "blog") {
         xtermRef.current.terminal.write("\r\n");
         xtermRef.current.terminal.write("\x1B[1;93mLink to my personal blog \x1B[0m");
         xtermRef.current.terminal.writeln("\x1B[1;4;34mhttps://yasith.me/blog\x1B[0m");
         xtermRef.current.terminal.write(shellprompt);
-        setState({ input: "" });
+        setState((prevState) => { return { rows: prevState.rows, cols: prevState.cols, isLarge: prevState.isLarge, input: "" }});
         setTimeout(function() {
             window.open("https://yasith.me/blog");
         }, 1000);
-    } else if(state === "photos") {
+    } else if(state.input === "photos") {
         xtermRef.current.terminal.write("\r\n");
         xtermRef.current.terminal.write("\x1B[1;93mLink to my personal photos blog \x1B[0m");
         xtermRef.current.terminal.writeln("\x1B[1;4;34mhttps://yasith.me/photos\x1B[0m");
         xtermRef.current.terminal.write(shellprompt);
-        setState({ input: "" });
+        setState((prevState) => { return { rows: prevState.rows, cols: prevState.cols, isLarge: prevState.isLarge, input: "" }});
         setTimeout(function() {
             window.open("https://yasith.me/photos");
         }, 1000);
-    } else if(state === "shop") {
+    } else if(state.input === "shop") {
         xtermRef.current.terminal.write("\r\n");
         xtermRef.current.terminal.write("\x1B[1;93mLink to my redbubble shop \x1B[0m");
         xtermRef.current.terminal.writeln("\x1B[1;4;34mhttps://www.redbubble.com/people/Yalk/explore\x1B[0m");
         xtermRef.current.terminal.write(shellprompt);
-        setState({ input: "" });
+        setState((prevState) => { return { rows: prevState.rows, cols: prevState.cols, isLarge: prevState.isLarge, input: "" }});
         setTimeout(function() {
             window.open("https://www.redbubble.com/people/Yalk/explore");
         }, 1000);
-    } else if(state === "privacy") {
+    } else if(state.input === "privacy") {
         xtermRef.current.terminal.write("\r\n");
         xtermRef.current.terminal.writeln("\x1B[1;93mThis website does not collect any personal information.\x1B[0m");
         xtermRef.current.terminal.writeln("\x1B[1;93mThis website is using Google Analytics and Google Tag manager 3rd party services.\x1B[0m");
         xtermRef.current.terminal.writeln("\x1B[1;93mThese 3rd party services may collect cookies, usage, location, device & network related data.\x1B[0m");
         xtermRef.current.terminal.write(shellprompt);
-        setState({ input: "" });
-    } else if(state === "credits") {
+        setState((prevState) => { return { rows: prevState.rows, cols: prevState.cols, isLarge: prevState.isLarge, input: "" }});
+    } else if(state.input === "credits") {
         xtermRef.current.terminal.write("\r\n");
         xtermRef.current.terminal.write("\x1B[1;93mcodercat \x1B[0m");
         xtermRef.current.terminal.writeln("\x1B[1;4;34mhttps://codercat.tk/\x1B[0m");
@@ -88,14 +87,14 @@ function command(xtermRef, state, setState) {
         xtermRef.current.terminal.write("\x1B[1;93mFavicon Generator \x1B[0m");
         xtermRef.current.terminal.writeln("\x1B[1;4;34mhttps://favicon.io/favicon-generator\x1B[0m");
         xtermRef.current.terminal.write(shellprompt);
-        setState({ input: "" });
-    } else if(state.startsWith("cat")) {
-        if(state.startsWith("cat ")) {
-            if(state === "cat ") {
+        setState((prevState) => { return { rows: prevState.rows, cols: prevState.cols, isLarge: prevState.isLarge, input: "" }});
+    } else if(state.input.startsWith("cat")) {
+        if(state.input.startsWith("cat ")) {
+            if(state.input === "cat ") {
                 xtermRef.current.terminal.write("\r\n");
                 xtermRef.current.terminal.writeln("\x1B[1;37mUsage: cat <filename>\x1B[0m");
                 xtermRef.current.terminal.write(shellprompt);
-            } else if (state === "cat about.txt") {
+            } else if (state.input === "cat about.txt") {
                 xtermRef.current.terminal.write("\r\n");
                 xtermRef.current.terminal.writeln("\x1B[1;93mPersonal website of Yasith Lokuge\x1B[0m");
                 xtermRef.current.terminal.write(shellprompt);
@@ -106,7 +105,7 @@ function command(xtermRef, state, setState) {
                 xtermRef.current.terminal.write(shellprompt);
             }
         } else {
-            if(state === "cat") {
+            if(state.input === "cat") {
                 xtermRef.current.terminal.write("\r\n");
                 xtermRef.current.terminal.writeln("\x1B[1;37mUsage: cat <filename>\x1B[0m");
                 xtermRef.current.terminal.write(shellprompt);
@@ -117,13 +116,13 @@ function command(xtermRef, state, setState) {
                 xtermRef.current.terminal.write(shellprompt);
             }
         }
-        setState({ input: "" });
+        setState((prevState) => { return { rows: prevState.rows, cols: prevState.cols, isLarge: prevState.isLarge, input: "" }});
     } else {
         xtermRef.current.terminal.writeln(
             "\r\n\x1B[0;34m command not found: " + state +  ", pls type help and hit enter for a list of commands\x1B[0m"
         );
         xtermRef.current.terminal.write(shellprompt);
-        setState({ input: "" })
+        setState((prevState) => { return { rows: prevState.rows, cols: prevState.cols, isLarge: prevState.isLarge, input: "" }});
     }
 }
 
@@ -131,7 +130,6 @@ function createTerminal(xtermRef, state) {
     xtermRef.current.terminal.write('\x1b[2K\r')    
     xtermRef.current.terminal.clear();
     xtermRef.current.terminal.writeln("");
-
     state.isLarge ? logoLarge(xtermRef) : logoSmall(xtermRef);
     xtermRef.current.terminal.writeln("");
     xtermRef.current.terminal.writeln("\x1B[1;37mHi, I'am Yasith Lokuge. Welcome to my personal website.\x1B[0m");
@@ -205,8 +203,8 @@ class Terminal extends React.Component {
                             // If the user hits empty and there is something typed echo it.
                             if (code === 13 && this.state.input.length > 0) {
                                 this.fitAddon.fit();
-                                command(this.xtermRef, this.state.input.toLowerCase(), (val) => this.setState(val))
-                                this.setState({ input: "" });
+                                command(this.xtermRef, this.state, (val) => this.setState(val))
+                                this.setState((prevState) => { return { rows: prevState.rows, cols: prevState.cols, isLarge: prevState.isLarge, input: "" }});
                             } else if (code < 32) { // Disable control Keys such as arrow keys
                                 return;
                             } else if (code === 127) {
