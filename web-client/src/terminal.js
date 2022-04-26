@@ -111,7 +111,7 @@ function command(xtermRef, state, setState) {
                 xtermRef.current.terminal.write(shellprompt);
             } else {
                 xtermRef.current.terminal.writeln(
-                    "\r\n\x1B[0;34m command not found: " + state +  ", pls type help and hit enter for a list of commands\x1B[0m"
+                    "\r\n\x1B[0;34m command not found: " + state.input +  ", pls type help and hit enter for a list of commands\x1B[0m"
                 );
                 xtermRef.current.terminal.write(shellprompt);
             }
@@ -119,7 +119,7 @@ function command(xtermRef, state, setState) {
         setState((prevState) => { return { rows: prevState.rows, cols: prevState.cols, isLarge: prevState.isLarge, input: "" }});
     } else {
         xtermRef.current.terminal.writeln(
-            "\r\n\x1B[0;34m command not found: " + state +  ", pls type help and hit enter for a list of commands\x1B[0m"
+            "\r\n\x1B[0;34m command not found: " + state.input +  ", pls type help and hit enter for a list of commands\x1B[0m"
         );
         xtermRef.current.terminal.write(shellprompt);
         setState((prevState) => { return { rows: prevState.rows, cols: prevState.cols, isLarge: prevState.isLarge, input: "" }});
